@@ -5,10 +5,12 @@ type ConstructorStructure = {
 	items: ConstructorItem[];
 
 	selectedItem: ConstructorItem | null;
-	childStructure: ConstructorStructure[];
+	childStructures: ConstructorStructure[];
 };
 
 type ConstructorItem = {
+	id: string;
+
 	typeId: string;
 	childTypeIds: string[];
 

@@ -2,7 +2,7 @@ import {
 	ConstructorItemGroup,
 	ConstructorItem,
 	ConstructorStructure,
-} from '@/types/constructor';
+} from '@/src/types/constructor';
 
 function generateChildStructure(
 	itemGroups: ConstructorItemGroup[],
@@ -13,7 +13,7 @@ function generateChildStructure(
 		const { childTypeIds } = selectedItem;
 		childTypeIds.forEach((childTypeId) => {
 			childStructure.push({
-				id: '',
+				id: Math.random().toString(36).substring(2, 9),
 
 				typeId: childTypeId,
 				items:
@@ -21,7 +21,7 @@ function generateChildStructure(
 					[],
 
 				selectedItem: null,
-				childStructure: [],
+				childStructures: [],
 			});
 		});
 	}
@@ -38,7 +38,7 @@ function updateChildStructures(
 	}
 	return {
 		...currentStructure,
-		childStructure: currentStructure.childStructure.map((s) =>
+		childStructures: currentStructure.childStructures.map((s) =>
 			updateChildStructures(s, updatedStructure)
 		),
 	};
