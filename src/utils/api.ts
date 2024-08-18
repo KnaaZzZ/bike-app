@@ -8,6 +8,7 @@ export default async function onApi(
 	operationName: string
 ) {
 	// TODO: Implement authentication and authorization
+	// authentication: create a seesion on first request. let session be temporary.
 	try {
 		await connect();
 		const result = await operation();
