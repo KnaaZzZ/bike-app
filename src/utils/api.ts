@@ -7,7 +7,7 @@ export default async function onApi(
 	successStatus: number,
 	operationName: string
 ) {
-	// TODO: Implement authorization
+	// TODO: Implement authentication and authorization
 	try {
 		await connect();
 		const result = await operation();
