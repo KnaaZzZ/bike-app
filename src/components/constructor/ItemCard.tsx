@@ -1,51 +1,28 @@
-import { ConstructorStructure } from '@/src/types/constructor';
-import React, { useState } from 'react';
-import { useConstructorContext } from '@/src/contexts/constructor';
-import Dropdown from '../reusable/Dropdown';
+import React from 'react';
+import { ConstructorItem } from '@/src/types/constructor';
 
 type ComponentParams = {
-	structure: ConstructorStructure;
+	item: ConstructorItem | null;
+	selected?: boolean;
 };
 
-function ItemCard({ structure }: ComponentParams) {
-	const { selectItem } = useConstructorContext();
-	const [selectedIndex, setSelectedIndex] = useState<number>(-1);
-
+function ItemCard({ item, selected = false }: ComponentParams) {
 	return (
-		<div className='h-full m-2 p-4 bg-blue-50 border border-blue-300 rounded-md shadow-md'>
-			<h2 className='text-lg font-semibold mb-2 text-blue-700'>
-				Structure ID: {structure.id}
-			</h2>
-			<Dropdown
-				value={structure.selectedItem?.id || ''}
-				placeholder='Select item'
+		<div className='flex flex-col w-[200px] h-[200px]'>
+			<div
+				className={`flex items-center justify-center h-[50px] rounded-t-[10px] ${!selected ? 'bg-[#00296B]' : 'bg-[#FDC500]'}`}
 			>
-				<ul className='bg-white rounded shadow-lg border border-gray-200'>
-					{structure.items.map((item, index) => (
-						<li key={item.id} className='p-2 hover:bg-gray-100'>
-							<button
-								type='button'
-								className={`w-full text-left ${
-									selectedIndex === index ? 'bg-blue-100' : ''
-								}`}
-								onClick={() => {
-									setSelectedIndex(
-										index === selectedIndex ? -1 : index
-									);
-									selectItem(
-										structure,
-										index !== selectedIndex
-											? structure.items[index] || null
-											: null
-									);
-								}}
-							>
-								{item.id}
-							</button>
-						</li>
-					))}
-				</ul>
-			</Dropdown>
+				<p
+					className={`font-medium text-[16px] ${!selected ? 'text-white' : 'text-black'}`}
+				>
+					{item?.name}
+				</p>
+			</div>
+			<div
+				className={`flex items-center justify-center h-[150px] rounded-b-[10px] border-[5px] border-t-0 ${!selected ? 'border-[#00296B] bg-[#00509D]' : 'border-[#FDC500] bg-[#FFD500]'} `}
+			>
+				Image
+			</div>
 		</div>
 	);
 }

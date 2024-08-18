@@ -15,7 +15,7 @@ function generateChildStructure(
 			childStructure.push({
 				id: Math.random().toString(36).substring(2, 9),
 
-				typeId: childTypeId,
+				type: childTypeId,
 				items:
 					itemGroups.find((i) => i.typeId === childTypeId)?.items ||
 					[],

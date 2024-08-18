@@ -1,7 +1,6 @@
-'use client';
-
 import React from 'react';
 import Constructor from '../components/constructor';
+import { useConstructorContext } from '../contexts/constructor';
 
 function Page() {
 	return (

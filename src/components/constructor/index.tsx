@@ -3,13 +3,13 @@
 import React from 'react';
 import { ConstructorStructure } from '@/src/types/constructor';
 import { useConstructorContext } from '@/src/contexts/constructor';
-import ItemCard from './ItemCard';
+import StructureCard from './StructureCard';
 
 function renderChildStructures(childStructure: ConstructorStructure) {
 	return (
 		<div className='flex flex-col bg-white border rounded-md shadow-md p-4 m-2'>
 			<div className=''>
-				<ItemCard structure={childStructure} />
+				<StructureCard structure={childStructure} />
 			</div>
 			{childStructure.childStructures.length > 0 && (
 				<ul className='pl-4 mt-2 border-l-2 border-gray-300 space-y-2'>

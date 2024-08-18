@@ -1,7 +1,10 @@
 type ConstructorStructure = {
 	id: string;
 
-	typeId: string;
+	type: {
+		id: string;
+		name: string;
+	};
 	items: ConstructorItem[];
 
 	selectedItem: ConstructorItem | null;
@@ -14,7 +17,7 @@ type ConstructorItem = {
 	typeId: string;
 	childTypeIds: string[];
 
-	value: any;
+	name: string;
 };
 type ConstructorItemGroup = {
 	typeId: string;
